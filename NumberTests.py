@@ -11,6 +11,11 @@ def isThreeOrFive(n):
 def isPrime(p):
   """Returns boolean (True/False) if the value given is prime."""
 
+  if p <= 1:
+    return False
+  for i in range(2, int(p ** 0.5) + 1):
+    if p % i == 0:
+      return False
   return True
 
 def isEven(n):
@@ -24,8 +29,8 @@ def isEven(n):
 def addNum(numList, num):
   """Adds the given number to the given list. Does not add duplicate values."""
 
-  numList.append(num)
-
+  if num not in numList:
+    numList.append(num)
 
 def fibonacciSequence(value):
   """Returns a list of numbers in the fibonacci sequence up to the given value"""
@@ -52,6 +57,11 @@ def main():
 
   if isEven(num):
     print("%d is an even number" %(num))
+
+  if isThreeOrFive(num):
+    print("%d is a multiple of 3 or 5" % (num))
+
+  print("Fibonacci sequence up to %d:" % (num), fibonacciSequence(num))
 
 
 if __name__ == '__main__':
